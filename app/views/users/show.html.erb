@@ -1,18 +1,47 @@
 <main>
-<h2>User info</h2>
+  <div class="container px-5 px-sm-0">
+    <div class="row">
+      <div class="col-md-3">
+        <h2>User info</h2>
+        <table class>
+          <tbody>
+            <tr></tr>
+            <tr><th>name</th><th><%= @user.name %></th></tr>
+            <tr><th>introduction</th><th><%= @user.introduction %></th></tr>
+          </tbody>
+        </table>
+        <div class="row">
+          <%= link_to "edit", edit_user_path(@user.id), class: "btn btn-secondary" %>
+        </div>
 
-<table class="table">
-  <tbody>
-    <tr></tr>
-    <tr><th>name</th><th><%= @user.name %></th></tr>
-    <tr><th>introduction</th><th><%= @user.introduction %></th></tr>
-  </tbody>
-</table>
+        <h2 class="mt-3">New Book</h2>
+        <%= form_with model: @book do |f| %>
+        <h4>Title</h4>
+        <%= f.text_field :title %>
+        <h4>Opinion</h4>
+        <%= f.text_area :oppinion %>
+        <%= f.submit 'Create Book' %>
+        <% end %>
+      </div>
+    </div>
+  </div>
 
-<div class="row">
-
-</div>
-
-<h3>New book</h3>
+ <div class="col-md-8 offset-md-1">
+   <h2>Books</h2>
+   <table class="table table-hover table-inverse">
+     <thead>
+       <tr>
+         <th></th><th>title</th><th>Opinion</th>
+       </tr>
+     </thead>
+     <tbody>
+       <tr>
+         <td></td>
+         <td></td>
+         <td></td>
+       </tr>
+     </tbody>
+   </table>
+ </div>
 
 </main>
