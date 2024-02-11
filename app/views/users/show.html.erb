@@ -19,7 +19,7 @@
         <h4>Title</h4>
         <%= f.text_field :title %>
         <h4>Opinion</h4>
-        <%= f.text_area :oppinion %>
+        <%= f.text_area :body %>
         <%= f.submit 'Create Book' %>
         <% end %>
       </div>
@@ -35,11 +35,22 @@
        </tr>
      </thead>
      <tbody>
-       <tr>
-         <td></td>
-         <td></td>
-         <td></td>
-       </tr>
+        <tr>
+          <% @books.each do |book| %>
+          <td>
+            <%= link_to user_path(@user.id) do %>
+            <%= image_tag @user.get_profile_image(100,100) %>
+  　　        <% end %>
+          </td>
+          <td>
+            <%= link_to book_path(book.id) do %>
+            <%= book.title %>
+            <% end %>
+          </td>
+          <td><%= book.body %></td>
+          <% end %>
+        </tr>
+
      </tbody>
    </table>
  </div>
