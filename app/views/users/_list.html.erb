@@ -1,5 +1,5 @@
 
-      
+
         <h2>User info</h2>
         <table class>
           <tbody>
@@ -9,10 +9,17 @@
           </tbody>
         </table>
         <div class="row">
-          <%= link_to edit_user_path(user.id), class: "btn btn-outline-secondary" do %>
+          <%= link_to edit_user_path(current_user), class: "btn btn-outline-secondary" do %>
           <i class="fa-solid fa-gear"></i>
           <% end %>
         </div>
 
-        
-      
+　　　　<h2 class="mt-3">New Book</h2>
+        <%= form_with model: Book.new do |f| %>
+        <h4>Title</h4>
+        <p> <%= f.text_field :title %></p>
+        <h4>Opinion</h4>
+       　<p> <%= f.text_area :body %></p>
+       　　 <%= f.submit 'Create Book', class: "btn btn-success" %>
+       　　 <% end %>
+

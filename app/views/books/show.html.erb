@@ -2,7 +2,6 @@
   <div class="container px-5 px-sm-0">
     <div class="row">
       <div class="col-md-3">
-        <%= render 'users/list', user: @user %>
         <%= render 'books/list', book: @book %>
       </div>
 
@@ -12,11 +11,15 @@
         <tbody>
           <tr>
             <td>
-              <%= link_to user_path(@user.id) do %>
+              <%= link_to user_path(current_user) do %>
               <%= image_tag @book.user.get_profile_image(100,100) %>
               <% end %>
             </td>
-            <td><%= link_to @book.title, book_path(@book.id) %></td>
+            <td>
+              <%= link_to book_path(@book.id) do %>
+              <%= @book.title %>
+              <% end %>
+            </td>
             <td><%= @book.body %></td>
             <td>
               <% if @book.user == current_user %>

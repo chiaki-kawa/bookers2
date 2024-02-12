@@ -1,11 +1,19 @@
 class UsersController < ApplicationController
   before_action :is_matching_login_user, only: [:edit, :update]
 
+  def create
+    @user = User.new(user_params)
+    if @user.save
+      flash[:alert] = "Welcome! You have signed up successfully."
+    else
+      render :new
+    end
+  end
+
   def index
     @users = User.all
     @user = current_user
   end
-
 
   def show
     @user = User.find(params[:id])
@@ -20,7 +28,8 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     @user.update(user_params)
-    redirect_to user_path
+    flash[:notice] = "You have updated user successfully."
+    redirect_to user_path(@user.id)
   end
 
   private
