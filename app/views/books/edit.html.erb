@@ -1,4 +1,4 @@
-main>
+<main>
   <div class="container">
     <div class="row">
       <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
@@ -14,17 +14,21 @@ main>
 
         <%= form_with model: @book do |f| %>
 
-        <div class="field"><h4>Title</h4></div>
-        <%= f.text_field :title %>
+        <div class="form-group">
+          <h4>Title</h4>
+          <%= f.text_field :title %>
+        </div>
 
-        <div class="field"><h4>Opinion</h4></div>
-        <%= f.text_area :body %>
+        <div class="form-group">
+          <h4>Opinion</h4>
+          <%= f.text_area :body %>
+        </div>
 
-        <div class="action"><%= f.submit 'Update Book' %></div>
+        <div class="action"><%= f.submit 'Update Book', class: "btn btn-success" %></div>
 
         <% end %>
 
-        <%= link_to "Show", book_path(@book.id) %> | <%= link_to "Back", "/books"  %>
+        <p><%= link_to "Show", book_path(@book.id) %> | <%= link_to "Back", "/books" %></p>
       </div>
     </div>
   </div>
